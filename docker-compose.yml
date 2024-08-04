@@ -1,0 +1,75 @@
+services:
+  app:
+    build:
+      args:
+        user: sammy
+        uid: 1000
+      context: ./
+      dockerfile: Dockerfile
+    image: training
+    deploy:
+      resources:
+        limits:
+          memory: 4098M
+        reservations:
+          memory: 2098M
+    container_name: training-app
+    restart: 'no'
+    entrypoint: [ "bash", "-c", "composer install && npm install && npm run build && php-fpm"]      
+    depends_on: 
+      - db
+    working_dir: /var/www
+    volumes:
+      - ./:/var/www 
+    networks:
+      - training
+
+  db:
+    image: mysql:5.7
+    platform: linux/x86_64
+    deploy:
+      resources:
+        limits:
+          memory: 4098M
+        reservations:
+          memory: 2098M
+    container_name: training-db
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: ${DB_DATABASE}
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+      # MYSQL_USER: ${DB_USERNAME}
+      MYSQL_ALLOW_EMPTY_PASSWORD: "true" 
+      SERVICE_TAGS: dev
+      SERVICE_NAME: mysql
+    volumes:
+      - dbdata:/var/lib/mysql/
+      - ./docker-compose/mysql:/docker-entrypoint-initdb.d
+    networks:
+      - training
+
+  nginx:
+    image: nginx:1-alpine-slim
+    deploy:
+      resources:
+        limits:
+          memory: 4098M
+        reservations:
+          memory: 2098M
+    container_name: training-nginx
+    restart: unless-stopped
+    ports:
+      - 8081:8081
+    volumes:
+      - ./:/var/www
+      - ./docker-compose/nginx:/etc/nginx/conf.d/
+    networks:
+      - training
+
+networks:
+  training:
+    driver: bridge
+
+volumes:
+  dbdata:
+    driver: local
