@@ -1,4 +1,4 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://socialify.git.ci/kzacristo/avaliacao_grupoplanmarketing/image?language=1&name=1&owner=1&stargazers=1&theme=Light" width="400" alt="Laravel Logo"></a></p>
 
 <p align="center">
 <a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
@@ -18,7 +18,7 @@
   <img width="12" />
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" height="40" alt="typescript logo"  />
   <img width="12" />
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/laravel/laravel-plain.svg](https://th.bing.com/th/id/OIP.Hh_tEbIb4-MagJsV6x_RZwHaHa?w=175&h=180&c=7&r=0&o=5&pid=1.7)" height="40" alt="laravel logo"  />
+  <img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" height="40" alt="laravel logo"  />
   <img width="12" />
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg" height="40" alt="php logo"  />
   <img width="12" />
@@ -35,7 +35,17 @@
 
 <br clear="both">
 
-<h4 align="left">## Variáveis de Ambiente<br><br>Para rodar esse projeto, você vai precisar adicionar as seguintes variáveis de ambiente no seu .env<br><br>`API_KEY`<br><br>`ANOTHER_API_KEY`</h4>
+<h4 align="left">## Variáveis de Ambiente<br><br>Para rodar esse projeto, você vai precisar adicionar as seguintes variáveis de ambiente no seu .env<br><br>
+</h4>
+
+```
+DB_CONNECTION=mysql
+DB_HOST=training-db
+DB_PORT=3306
+DB_DATABASE=training_db
+DB_USERNAME=root
+DB_PASSWORD=admin
+```
 
 ###
 
@@ -47,6 +57,26 @@
 
 <br clear="both">
 
-<p align="left">Para executar o projeto:<br><br>git clone : https://github.com/kzacristo/avaliacao_grupoplanmarketing.git<br><br>acesse o diretório do arquivo<br><br>execute os comandos abaixo : <br><br>docker-compose up --build -d<br><br>docker-compose exec training-app php artisan migration <br><br>acesse http://localhost:8081</p>
+<p align="left">Para executar o projeto:<br><br>git clone :</p>
+
+```
+https://github.com/kzacristo/avaliacao_grupoplanmarketing.git
+```
+<p>acesse o diretório do arquivo
+<p>execute os comandos abaixo : </p>
+
+```
+docker-compose up --build -d
+```
+
+<p>execure a migration dentro do container com o comando : </p>
+
+```
+docker-compose exec training-app php artisan migration
+```
+
+<p>acesse : </p> 
+
+http://localhost:8081</p>
 
 ###
