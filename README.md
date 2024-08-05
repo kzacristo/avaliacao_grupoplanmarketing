@@ -74,8 +74,17 @@ docker-compose up --build -d
 ```
 docker-compose exec training-app php artisan migration
 ```
+<p>resposta esperada após executar o comando</p>
+<img src="resources/js/assets/respost-comando-docker.png" width="500" alt="resposta migration">
 
-<p>acesse : </p> 
+<p>Caso a resposta não for a esperada não se desespere basta acessar o container Docker e executar o comando internamente com os comandos abaixo :</p>
+
+```
+docker exec -it training-app /bin/bash
+php artisan migration
+```
+
+<p>Após acesse à aplicação: </p> 
 
 http://localhost:8081</p>
 
